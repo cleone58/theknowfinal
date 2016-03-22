@@ -1,15 +1,15 @@
 <div id="venue_show_container">
+
+  <div id="map" data-latitude="<%= @venue.latitude %>" data-longitude="<%= @venue.longitude %>"> </div>
+
   <div id="venue_show_info">
-
-    <div id="map" data-latitude="<%= @venue.latitude %>" data-longitude="<%= @venue.longitude %>"> </div>
-
     <h2><%= @venue.name %></h2></br>
     <ul id="venue_info">
       <li><%= @venue.address %></li>
       <li><%= @venue.city.to_s + ", " + @venue.state_prov.to_s %></li>
-      <li><%= @venue.country %></li></br>
+      <li><%= @venue.country %></li>
       <li><%= @venue.postal_zip_code %></li>
     </ul>
-
   </div>
+
 </div>

@@ -6,15 +6,66 @@
   @include outer-container;
 }
 
-#venue_show_info {
-  @include span-columns(4);
+#venue_map_container {
+  @include span-columns(6);
+  margin-left: 0px;
+  margin-right: 0px;
+
 }
 
-#venue_map_container {
-  @include span-columns(8);
+#venue_show_info {
+  @include span-columns(6);
 }
 
 #map {
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+  .the_know_logo h1 {
+    font-size: 30px;
+    margin-top: -35px;
+    padding-top: 0px;
+    margin-left: 15px;
+    right: 0px;
+  }
+
+  .the_know_logo h2 {
+    font-size: 16px;
+    margin-top: 50px;
+    margin-left: 15px;
+    right: 0px;
+  }
+
+  a#js-centered-navigation-mobile-menu {
+    line-height: 20px;
+    padding-bottom: 5px;
+  }
+
+  #venue_show_container {
+    @include outer-container;
+  }
+
+  #venue_show_info {
+    @include span-columns(10);
+    @include shift(1);
+    margin-bottom: 20px;
+
+    h2 {
+      margin-bottom: 0px;
+    }
+  }
+
+  #map {
+    height: 270px;
+    width: 270px;
+    @include span-columns(10);
+    @include shift(1);
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+
 }
