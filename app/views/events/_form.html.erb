@@ -1,0 +1,46 @@
+<% if @events != nil %> <!--wrap form in if/else statement -->
+  <div class="pagination">
+    <%= paginate @events %>
+    <%= page_entries_info @events, :entry_name => 'items' %></br>
+  </div>
+
+  <div id="event_index_container">
+    <% @events.each do |event| %>
+      <div id="card_container">
+        <ul>
+          <li class="event">
+            <div class="cards">
+              <div class="card">
+                <%= link_to event_path(event.api_event_id) do %>
+                  <div class="card-image">
+                    <%= image_tag event.image_url %>
+                  </div>
+                  <div class="card-header">
+                    <%= event.title %>
+                  </div>
+                  <div class="card-copy">
+                    <% event.api_event_id %>
+                    <%= event.venue_name %></br>
+                    <%= Time.parse(event.datetime_local).strftime("%I:%M %p") %></br>
+                    <%= Time.parse(event.datetime_local).strftime("%A %B %d") %></br>
+                    <%= event.city_name.to_s + ", " + event.state_prov.to_s %></br>
+                    <%= event.country_name %></br>
+
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="pagination">
+    <%= paginate @events %>
+  </div>
+
+<% end %>
+
+  </br>
+  </br>

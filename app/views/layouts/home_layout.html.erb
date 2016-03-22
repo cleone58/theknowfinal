@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Theknow</title>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'home' , media: 'all', 'data-turbolinks-track' => true %>
+    <%= yield(:head)%>
+  </head>
+
+  <body>
+    <div class="the-know-wrap">
+      <div class="concert_pic">
+        <%=image_tag("concert.jpg")%>
+      </div>
+
+      <div class="the_know_text">
+        <h1>the know</h1>
+        <h2>Your Premier Destination for Event Listings</h2>
+      </div>
+    </div>
+    <div class="cirrcle">
+      <p class="enter">Enter</p>
+    </div>
+  </div>
+  </body>
+</html>

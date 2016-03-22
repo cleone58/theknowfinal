@@ -1,0 +1,53 @@
+<div id="event_show_container">
+
+  <div id="event_show_image">
+    <%= image_tag @event.image_url %></br></br>
+    <%= button_to "Get Tickets!", @event.tickets_url, method: :get %></br></br>
+  </div>
+
+  <div id="event_show_info">
+    <h2><%= @event.title %></h2></br>
+    <ul>
+      <li><%= Time.parse(@event.datetime_local).strftime("%I:%M %p") %></li></br>
+      <li><%= Time.parse(@event.datetime_local).strftime("%A %B %d") %></li></br>
+      <li><%= link_to @event.venue_name, venue_path(@event.api_venue_id), data: { no_turbolink: true } %></li></br>
+      <li><%= @event.city_name.to_s + ", " + @event.state_prov.to_s %></li></br>
+      <li><%= @event.country_name %></li></br></br>
+
+      <%if @event.avg_price == "" || @event.avg_price.to_s.empty? %>
+        <li><%= "Avg Ticket Price: Not available" %></li>
+      <% else %>
+        <li><%= "Avg Ticket Price:" %></li></br>
+        <li><%= "$" + @event.avg_price.to_s %></li>
+      <% end %>
+
+      </br>
+      </br>
+      </br>
+      </br>
+
+      <li><h2>Performers:</h2></li></br>
+
+      <% @performers.each do |performer| %>
+        <li><%= performer %></li></br>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="event_show_recommendations_container">
+    <h2>Other Recommended Events:</h2>
+    <table class="event_show_recommended_events">
+      <tr>
+        <th>Event 1 sadfas dfasdfasd fasdfads fasd fas dfasdfad kjh lkjh lkjh lj lkjh klj lkj klhkjkjhl fadf</th>
+        <th>Event 2 sdfsdfadfasdfadfafdsafda</th>
+        <th>Event 3</th>
+      </tr>
+      <tr>
+        <td><img src="http://placehold.it/200x200"></td>
+        <td><img src="http://placehold.it/200x200"></td>
+        <td><img src="http://placehold.it/200x200"></td>
+      </tr>
+    </table>
+  </div>
+
+</div>

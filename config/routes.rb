@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  
+  # root :to => 'events#index'
+  root :to => 'events#home'
+  resources :user_sessions
+  resources :users
+  resources :events
+  resources :venues
+  resources :bookmarks
+
+  resources :events do
+    resources :venues
+    resources :bookmarks, only: [:create]
+  end
+
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

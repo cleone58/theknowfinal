@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  api_event_id: 1
+  title: MyString
+  image_url: MyString
+  api_venue_id: 1
+  venue_id: 
+  venue_name: MyString
+  city_name: MyString
+  country_name: MyString
+  category: MyString
+  tickets_url: MyString
+  state_prov: MyString
+  avg_price: MyString
+  datetime_local: MyString
+
+two:
+  api_event_id: 1
+  title: MyString
+  image_url: MyString
+  api_venue_id: 1
+  venue_id: 
+  venue_name: MyString
+  city_name: MyString
+  country_name: MyString
+  category: MyString
+  tickets_url: MyString
+  state_prov: MyString
+  avg_price: MyString
+  datetime_local: MyString

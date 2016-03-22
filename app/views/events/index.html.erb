@@ -1,0 +1,31 @@
+<div class="main_search">
+  <span class="form">
+    <%= form_tag events_path, method: :get, authentication: false, id: 'search-form' do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for an performer, venue, or team."  %>
+      <%= select_month(14, prefix:"start", prompt:"Choose Start Month") %> <%= select_month(14, prefix:"end", prompt:"Choose End Month") %>
+      <%= select_year(2016, prefix:"year", start_year: 2016, end_year: 2018) %>
+      <%= submit_tag "Search", id: "submit"%>
+    <% end %>
+  </span>
+</div>
+
+</br>
+
+<!-- <div id="events_index_popular_events">
+<h2>Popular Events</h2>
+  <table class="events_index_popular_events">
+    <tr>
+      <th>Event 1 sadfas dfasdfasd fasdfads fasd fas dfasdfad kjh lkjh lkjh lj lkjh klj lkj klhkjkjhl fadf</th>
+      <th>Event 2 sdfsdfadfasdfadfafdsafda</th>
+      <th>Event 3</th>
+    </tr>
+    <tr>
+      <td><img src="http://placehold.it/200x200"></td>
+      <td><img src="http://placehold.it/200x200"></td>
+      <td><img src="http://placehold.it/200x200"></td>
+    </tr>
+</div> -->
+
+<div id="response_showcase">
+  <%= render "form" %>
+</div>

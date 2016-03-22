@@ -1,0 +1,296 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cards {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.card {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $card-border-color: $base-border-color;
+  $card-border: 1px solid $card-border-color;
+  $card-background: lighten($card-border-color, 10%);
+  $card-header-background: $card-background;
+  $card-margin: 1em;
+  $card-image-hover-opacity: 0.7;
+  $card-image-hover-color: #F8F2B4;
+
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  @include transition (all 0.2s ease-in-out);
+  background-color: $card-background;
+  border-radius: $base-border-radius;
+  border: $card-border;
+  box-shadow: 0 2px 4px darken($base-background-color, 10%);
+  cursor: pointer;
+  margin: 0 $card-margin $base-spacing $card-margin;
+  position: relative;
+
+
+  .card-image {
+    overflow: hidden;
+    height: 150px;
+    max-height: 150px;
+    background-color: black;
+
+    img {
+      @include transition (all 0.2s ease-in-out);
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  .card-header {
+    @include transition (all 0.2s ease-in-out);
+    background-color: white;
+    border-bottom: $card-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+  }
+
+  .card-copy {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+    background-color: white;
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: $card-image-hover-opacity;
+      margin-left: -8px;
+    }
+
+  }
+
+  &:active {
+    background-color: $card-background;
+
+    .card-header {
+      background-color: $card-background;
+    }
+  }
+}
+
+
+.pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+nav.pagination {
+  margin: 0px;
+}
+
+// ======================================
+// search-form
+// ======================================
+form#search-form {
+  padding-left: 5%;
+}
+
+input#search {
+  width: 95%;
+}
+
+.main_search {
+  margin-top: 100px;
+}
+
+#start_month {
+  margin-top: 25px;
+}
+// ======================================
+
+#events_index_popular_events {
+  margin-top: 25px;
+}
+
+.event_show_recommended_events {
+  table-layout: fixed;
+
+  th, td {
+    border: none;
+    padding-right: 50px;
+    word-wrap: break-word;
+  }
+}
+
+#event_show_container {
+  @include outer-container;
+  clear: both;
+}
+
+#event_show_image {
+  @include span-columns(8);
+  @include shift(2);
+  margin-top: 20px;
+}
+
+#event_show_info {
+  @include span-columns(12);
+  padding-left: 10px;
+  padding-right: 10px;
+
+  ul{
+    line-height: 16px;
+    width: 100%;
+  }
+}
+
+#event_show_recommendations_container {
+  @include span-columns(12);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 40px;
+  margin-bottom: 100px;
+  clear: both;
+}
+
+@media screen and (max-width: 500px) {
+  #event_show_recommendations_container {
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 899px) {
+
+  #event_show_recommendations_container {
+    padding-top: 100px;
+    margin-left: 10px;
+    clear: both;
+  }
+
+  // ======================================
+  // index
+  // ======================================
+
+  #event_index_container {
+    @include outer-container;
+  }
+
+  #card_container {
+    @include span-columns(6);
+    @include omega(2n);
+    margin-top: 16px;
+  }
+
+  #logged_in_user > p {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  form#search-form {
+    padding-left: 25%;
+  }
+
+  input#search {
+    width: 60%;
+  }
+
+// ======================================
+// show
+// ======================================
+  #event_show_container {
+    @include outer-container;
+    margin-left: 10px;
+  }
+
+  #event_show_image {
+    @include span-columns(5);
+    margin-top: 100px;
+    margin-left: 10px;
+  }
+
+  #event_show_info {
+    @include span-columns(5);
+    margin-top: 100px;
+
+    ul{
+      line-height: 12px;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 900px){
+
+  #event_show_recommendations_container {
+    padding-top: 100px;
+    margin-left: 10px;
+    clear: both;
+  }
+
+// ======================================
+// index
+// ======================================
+
+  #event_index_container {
+    @include outer-container;
+  }
+
+  #card_container {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+
+  #logged_in_user > p {
+    text-align: right;
+    padding-right: 50  px;
+  }
+
+  form#search-form {
+    padding-left: 25%;
+  }
+
+  input#search {
+    width: 60%;
+  }
+
+// ======================================
+// show
+// ======================================
+
+  #event_show_container {
+    @include outer-container;
+  }
+
+  #event_show_image {
+    @include span-columns(5);
+    margin-top: 100px;
+    margin-left: 10px;
+  }
+
+  #event_show_info {
+    @include span-columns(5);
+    margin-top: 100px;
+
+    ul{
+      line-height: 12px;
+      width: 100%;
+    }
+  }
+}
+// =====================================

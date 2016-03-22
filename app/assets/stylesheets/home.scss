@@ -1,0 +1,92 @@
+
+.concert_pic {
+  margin-right: -8px;
+  margin-top: -7px;
+  border-top: 2px solid black;
+  overflow: hidden;
+}
+
+.concert_pic img {
+    transition: transform 30s linear;
+    transform: scale(2);
+    display: inherit;
+    margin-left: -3px;
+    height: 450px;
+    width: 100%;
+}
+
+.the_know_text h1 {
+    color: white;
+    font-size: 136px;
+    text-align: center;
+    font-family: Calligraffitti, cursive;
+    position: relative;
+    top: -101px;
+
+  }
+.the_know_text h2 {
+      color:white;
+      font-size: 47px;
+      text-align: center;
+      font-family: Calligraffitti, cursive;
+      position: relative;
+      top: -235px;
+
+    }
+    @import url(http://fonts.googleapis.com/css?family=Gabriela);
+
+    body {
+      background-image: url('http://subtlepatterns.com/patterns/mochaGrunge.png');
+    }
+
+    @-webkit-keyframes greenPulse {
+    from { -webkit-box-shadow: 0 0 1px #AFE30E; }
+    50% {  -webkit-box-shadow: 0 0 18px #91bd09; }
+    to {-webkit-box-shadow: 0 0 9px #8FB518; }
+    }
+
+    p.enter {
+      font-size: 2em;
+      font-family: 'Gabriela';
+      position: relative;
+      text-align: center;
+      padding-top: 44px;
+      padding-left: 61px;
+      padding-right: 61px;
+      color: white;
+
+    }
+
+    div.cirrcle {
+        margin: 100px auto;
+        width:200px;
+        height:200px;
+        position: relative;
+        top: -274px;
+    }
+
+    .cirrcle {
+        -moz-border-radius: 200px/200px;
+        -webkit-border-radius: 200px 200px;
+        border-radius: 200px/200px;;
+        border:1px solid #91bd09;
+        width:200px;
+        height:200px;
+        outline:none;
+        -webkit-animation-name: greenPulse;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .cirrcle:hover {
+        box-shadow: 0 0 2px #91bd09;
+        -webkit-box-shadow: 0 0 2px #91bd09;
+        -moz-box-shadow: 0 0 2px #91bd09;
+        border:1px solid #91bd09;
+    }
+
+    .log-in {
+      font-family: 'Gabriela', serif;
+      padding-top:70px;
+      color: #222324;
+    }
