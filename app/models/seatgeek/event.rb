@@ -21,6 +21,7 @@ module Seatgeek
 
     def self.event_search(keywords,month_start,month_end,year)
       response = get("/events?q=#{keywords.to_s.gsub(' ','-')}&per_page=1000&page=1&datetime_utc.gte=#{year}-#{month_start}-01&datetime_utc.lt=#{year}-#{month_end}-#{Seatgeek::Event.end_of_month(month_end)}&client_id=#{ENV['seatgeek_id']}&client_secret=#{ENV['seatgeek_secret']}")
+
       if response.empty?
         render 'index'
       else
@@ -29,6 +30,19 @@ module Seatgeek
         end
       end
     end
+
+    def self.event_search_geolocation(keywords,month_start,month_end,year,latitude,longitude)
+      response = get("/events?q=#{keywords.to_s.gsub(' ','-')}&per_page=1000&page=1&lat=#{latitude}&lon=#{longitude}&datetime_utc.gte=#{year}-#{month_start}-01&datetime_utc.lt=#{year}-#{month_end}-#{Seatgeek::Event.end_of_month(month_end)}&client_id=#{ENV['seatgeek_id']}&client_secret=#{ENV['seatgeek_secret']}")
+
+      if response.empty?
+        render 'index'
+      else
+        response["events"].map do |event|
+          new(event)
+        end
+      end
+    end
+
 
     def self.end_of_month(month)
       days_in_month = [nil, "31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]

@@ -10,6 +10,8 @@ class EventsController < ApplicationController
     if params[:search].blank?
       # flash[:alert] = "Your search is invalid. Please enter keywords, and search again."
       render 'index'
+    elsif params[:latitude] && params[:longitude]
+      @events = Kaminari.paginate_array(Seatgeek::Event.event_search_geolocation(params[:search],params[:start][:month],params[:end][:month],params[:year][:year],params[:latitude],params[:longitude])).page(params[:page]).per(18)
     else
       @events = Kaminari.paginate_array(Seatgeek::Event.event_search(params[:search],params[:start][:month],params[:end][:month],params[:year][:year])).page(params[:page]).per(18)
     end
