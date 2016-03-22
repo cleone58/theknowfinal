@@ -152,6 +152,7 @@ input#search {
   @include span-columns(12);
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: 200px;
 
   ul{
     line-height: 16px;
@@ -311,4 +312,27 @@ input#search {
   position: relative;
   bottom: -12px;
   right: -44px;
+}
+
+input#search {
+  width: 60%;
+  border-color: black;
+  border-style: solid;
+  border-width: 4px;
+  position:inherit;
+}
+
+h4#tag_line {
+  color: black;
+  position:relative;
+  font-family: cursive;
+  right: -522px;
+}
+
+input#submit {
+  background-color: black;
+  color: white;
+  right: -254px;
+  bottom: -28px;
+  position: relative;
 }

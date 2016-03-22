@@ -1,9 +1,8 @@
 <div class="main_search">
   <span class="form">
+    <h4 id="tag_line">"Thousands of events and millions of tickets all in one spot!"</h3>
     <%= form_tag events_path, method: :get, authentication: false, id: 'search-form' do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search for an performer, venue, or team."  %>
-      <%= select_month(14, prefix:"start", prompt:"Choose Start Month") %> <%= select_month(14, prefix:"end", prompt:"Choose End Month") %>
-      <%= select_year(2016, prefix:"year", start_year: 2016, end_year: 2018) %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search by Event, Artist, Team, or Venue"  %>
       <%= submit_tag "Search", id: "submit"%>
       <%= hidden_field_tag "latitude" %>
       <%= hidden_field_tag "longitude" %>

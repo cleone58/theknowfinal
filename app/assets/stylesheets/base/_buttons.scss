@@ -17,6 +17,9 @@
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  position: relative;
+  right:-254px;
+  bottom: -28px;
 
   &:hover,
   &:focus {

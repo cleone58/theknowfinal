@@ -3,6 +3,12 @@
   <div id="event_show_image">
     <%= image_tag @event.image_url %></br></br>
     <%= button_to "Get Tickets!", @event.tickets_url, method: :get %></br></br>
+
+    <% if current_user && !@event.watchers.include?(current_user) %>
+      <%= form_for [@event, @bookmark] do |f| %>
+        <%= f.submit "Bookmark Event" %>
+      <% end %>
+    <% end %>
   </div>
 
   <div id="event_show_info">
@@ -20,21 +26,25 @@
         <li><%= "Avg Ticket Price:" %></li></br>
         <li><%= "$" + @event.avg_price.to_s %></li>
       <% end %>
-
-      </br>
-      </br>
-      </br>
-      </br>
-
-      <li><h2>Performers:</h2></li></br>
-
-      <% @performers.each do |performer| %>
-        <li><%= performer %></li></br>
-      <% end %>
     </ul>
+
+    </br>
+    </br>
+    </br>
+    </br>
+
+    <!-- <ul> -->
+      <!-- <li><h2>Performers:</h2></li></br> -->
+
+      <%#if @performers %>
+        <%# @performers.each do |performer| %>
+          <!-- <li><%#= performer %></li></br> -->
+        <%# end %>
+      <%# end %>
+    <!-- </ul> -->
   </div>
 
-  <div id="event_show_recommendations_container">
+  <!-- <div id="event_show_recommendations_container">
     <h2>Other Recommended Events:</h2>
     <table class="event_show_recommended_events">
       <tr>
@@ -48,6 +58,6 @@
         <td><img src="http://placehold.it/200x200"></td>
       </tr>
     </table>
-  </div>
+  </div> -->
 
 </div>

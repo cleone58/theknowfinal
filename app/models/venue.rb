@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
   geocoded_by :extended_address
-
+  has_many :events
+  
   def self.geocode(venue)
     venue_to_geocode = venue
     geocoded_venue = venue_to_geocode.geocode

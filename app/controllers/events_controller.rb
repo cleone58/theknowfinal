@@ -10,10 +10,8 @@ class EventsController < ApplicationController
     if params[:search].blank?
       # flash[:alert] = "Your search is invalid. Please enter keywords, and search again."
       render 'index'
-    elsif params[:latitude] && params[:longitude]
-      @events = Kaminari.paginate_array(Seatgeek::Event.event_search_geolocation(params[:search],params[:start][:month],params[:end][:month],params[:year][:year],params[:latitude],params[:longitude])).page(params[:page]).per(18)
     else
-      @events = Kaminari.paginate_array(Seatgeek::Event.event_search(params[:search],params[:start][:month],params[:end][:month],params[:year][:year])).page(params[:page]).per(18)
+      @events = Kaminari.paginate_array(Seatgeek::Event.event_search(params[:search])).page(params[:page]).per(18)
     end
   end
 
@@ -21,18 +19,17 @@ class EventsController < ApplicationController
     if Event.exists?(api_event_id: params[:id])
       @event = Event.find_by(api_event_id: params[:id])
     else
-      @event = Seatgeek::Event.event_find(params[:id])
-      create_from_seatgeek
+      new_event = Seatgeek::Event.event_find(params[:id])
+      @event = Event.create( Seatgeek::Event.to_h(new_event) )
     end
-      @performers = Seatgeek::Event.event_performers_names(@event.performers)
+
+    # @performers = Seatgeek::Event.event_performers_names(new_event.performers)
+
+    @bookmark = Bookmark.new
   end
 
   def new
 
-  end
-
-  def create
-    create_from_seatgeek
   end
 
   def bookmark
@@ -46,11 +43,5 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:api_event_id, :user_id, :title, :category, :image_url, :api_venue_id, :venue, :venue_name, :tickets_url, :datetime_local, :city_name, :state_prov, :country_name, :avg_price)
-    end
-
-    def create_from_seatgeek
-      event = Seatgeek::Event.to_h(@event)
-      Event.create(event)
-
     end
 end

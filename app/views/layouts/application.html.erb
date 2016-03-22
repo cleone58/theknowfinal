@@ -26,25 +26,21 @@
 
               <li class="nav-link">
                 <a href="javascript:void(0)">
-                  <% if current_user %>
+                  <!-- <% if current_user %>
                     Bookmarks
-                  <% end %>
+                  <% end %> -->
                 </a>
               </li>
 
               <li class="nav-link">
                 <a href="javascript:void(0)">
-                  <% if current_user %>
-                    Favorites
-                  <% end %>
+                  <p>About</p>
                 </a>
               </li>
 
               <li class="nav-link">
                 <a href="javascript:void(0)">
-                  <% if current_user %>
-                    <%=link_to "Profile", user_path(current_user.id),'data-no-turbolink' => true %>
-                  <% end %>
+                    <%=link_to "Main", events_path %>
                 </a>
               </li>
 
@@ -66,7 +62,9 @@
 
               <li class="nav-link">
                 <a href="javascript:void(0)">
-                    <%=link_to "Main", events_path %>
+                  <% if current_user %>
+                    <%=link_to "Profile", user_path(current_user.id),'data-no-turbolink' => true %>
+                  <% end %>
                 </a>
               </li>
 

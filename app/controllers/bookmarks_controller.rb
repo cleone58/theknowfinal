@@ -24,15 +24,16 @@ class BookmarksController < ApplicationController
   # POST /bookmarks
   # POST /bookmarks.json
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = Bookmark.new(event_id: params[:event_id])
+    @bookmark.user = current_user
 
     respond_to do |format|
       if @bookmark.save
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
-        format.json { render :show, status: :created, location: @bookmark }
+        format.html { redirect_to event_path(@bookmark.event.api_event_id), notice: 'Bookmark was successfully created.' }
+        # format.json { render :show, status: :created, location: @bookmark }
       else
         format.html { render :new }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
+        # format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +70,6 @@ class BookmarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit(:event_id, :user_id)
+      params.require(:bookmark).permit(:user_id, :event_id)
     end
 end

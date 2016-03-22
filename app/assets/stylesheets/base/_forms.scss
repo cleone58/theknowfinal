@@ -14,7 +14,10 @@ legend {
 label {
   display: block;
   font-weight: 600;
-  margin-bottom: $small-spacing / 2;
+  margin-bottom: 0.375em;
+  position:relative;
+  right: -200px;
+  bottom: -9px;
 }
 
 input,
@@ -35,7 +38,9 @@ select[multiple] {
   margin-bottom: $small-spacing;
   padding: $base-spacing / 3;
   transition: border-color $base-duration $base-timing;
-  width: 100%;
+  width: 36%;
+  position:relative;
+  right: -200px;
 
   &:hover {
     border-color: shade($base-border-color, 20%);
