@@ -2,10 +2,16 @@
 // All this logic will automatically be available in application.js.
 
 function initMap() {
-  mapPlaceholder = $('#map');
+  var mapPlaceholder = $('#map');
+  var latLong = {lat: mapPlaceholder.data('latitude'), lng: mapPlaceholder.data('longitude')}
   map = new google.maps.Map(mapPlaceholder[0], {
-    center: {lat: mapPlaceholder.data('latitude'), lng: mapPlaceholder.data('longitude')},
-    zoom: 8
+    center: latLong,
+    zoom: 16
+  });
 
+  var marker = new google.maps.Marker({
+    position: latLong,
+    map: map,
+    title: "Venue Map"
   });
 }

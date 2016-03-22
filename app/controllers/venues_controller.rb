@@ -11,10 +11,7 @@ class VenuesController < ApplicationController
       venue = Seatgeek::Venue.venue_find(params[:id])
       create
       venue_to_update_lat_long = Venue.find_by(api_venue_id: params[:id])
-      new_lat_long = venue_to_update_lat_long.geocode
-      venue_to_update_lat_long.update(latitude: new_lat_long[0])
-      venue_to_update_lat_long.update(longitude: new_lat_long[1])
-      @venue = venue_to_update_lat_long
+      @venue = Venue.geocode(venue_to_update_lat_long)
     end
   end
 

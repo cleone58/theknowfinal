@@ -16,16 +16,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Seatgeek::Event.event_find(params[:id])
-    create_from_seatgeek
-
-    # if Event.exists?(api_event_id: params[:id])
-    #   @event = Event.find_by(api_event_id: params[:id])
-    # else
-    #   @event = Seatgeek::Event.event_find(params[:id])
-    # end
-
-    @performers = Seatgeek::Event.event_performers_names(@event.performers)
+    if Event.exists?(api_event_id: params[:id])
+      @event = Event.find_by(api_event_id: params[:id])
+    else
+      @event = Seatgeek::Event.event_find(params[:id])
+      create_from_seatgeek
+    end
+      @performers = Seatgeek::Event.event_performers_names(@event.performers)
   end
 
   def new
