@@ -57,6 +57,14 @@
 
     }
 
+    .enter a {
+      text-decoration: none;
+    }
+
+    .enter a:visited {
+      color: white;
+    }
+
     div.cirrcle {
         margin: 100px auto;
         width:200px;
